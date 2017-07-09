@@ -1,0 +1,52 @@
+﻿@model Entities.UserDTO
+@{ 
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href=@Url.Action("Index","Home")><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Profile </li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+
+<div id="mainDiv">
+    <div class="col-md-3">
+        <img id="image1" src="~/Content/images/@Model.pic" /><br><br>
+        <label style="padding-left:40px;">@Model.fName</label>
+        <label>@Model.lName</label>
+    </div>
+    <table class="info_table">
+        <tr>
+            <td>Your First Name : </td>
+            <td >@Model.fName </td>
+        </tr>
+        <tr>
+            <td>Your Last Name :</td>
+            <td >@Model.lName</td>
+        </tr>
+        <tr>
+            <td>Your Email : </td>
+            <td>@Model.email</td>   
+        </tr>
+        <tr>
+            <td>Your Phone No :</td>
+            <td >@Model.phone</td>
+        </tr>
+        <tr>
+            <td>Your Password:</td>
+            <td>
+                @for (int i=0;i<Model.password.Count();i++)
+                {
+                    <label>*</label>
+                }
+            </td>
+        </tr>
+     </table>
+
+    <a href="/Home/UpdateProfile/@Model.Id"  class="action-button shadow animate green" >Update your Profile</a>
+</div>

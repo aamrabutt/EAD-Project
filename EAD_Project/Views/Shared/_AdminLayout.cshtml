@@ -1,0 +1,90 @@
+﻿@model EAD_Project.Models.Admin_Model
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <script>
+        $(document).ready(function () {
+            var url = window.location;
+            $('.nav').find('.active').removeClass('active');
+            $('.nav li a').each(function () {
+                if (this.href == url) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>Shopify</span>Admin</a>
+                <ul class="user-menu">
+                    <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+                            <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
+                            <li><a href="@Url.Action("Login", "Account")"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <form role="search">
+            <div class="form-group">
+                <img src="~/Content/images/admin.png" width="100" height="70" alt="pic not available"/>
+                <!--<a href="#" class="btn btn-primary btn-sm">Change picture</a>-->
+            </div>
+            <div class="form-group">
+
+                @if (Model.name != null)
+                {
+                    <label>
+                        @Model.name
+                    </label>
+                }
+                else
+                {
+                    <label>Admin Name</label>
+                }
+                
+
+            </div>
+        </form>
+        <ul class="nav menu">
+
+            <li class="@((ViewBag.Title == "DashBoard") ? "active" : "")"><a href="Home"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+            <li class="@((ViewBag.Title == "Tables") ? "active" : "")"><a href="Tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
+            <li class="@((ViewBag.Title == "Messages") ? "active" : "")"><a href="Messages"><svg class="glyph stroked email"><use xlink:href="#stroked-email" /></svg> Messages</a></li>
+            <li><a href="@Url.Action("Login", "Account")"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> LogOut</a></li>
+
+        </ul>
+
+    </div><!--/.sidebar-->
+
+        @RenderBody()
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+﻿@model EAD_Project.Models.Admin_Model
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Messages";
+}
+<link href="~/Content/AdminCSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/AdminCSS/datepicker3.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/styles.css" rel="stylesheet">
+
+<script src="~/Scripts/lumino.glyphs.js"></script>
+
+    <div class="message">
+        <h1>Helo</h1>
+    </div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/chart-data.js"></script>
+<script src="~/Scripts/easypiechart.js"></script>
+<script src="~/Scripts/easypiechart-data.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script>
+    $('#calendar').datepicker({
+    });
+
+    !function ($) {
+        $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+            $(this).find('em:first').toggleClass("glyphicon-minus");
+        });
+        $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+    }(window.jQuery);
+
+    $(window).on('resize', function () {
+        if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+    })
+    $(window).on('resize', function () {
+        if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+    })
+</script>
+

@@ -1,0 +1,81 @@
+﻿@model Entities.UserDTO
+@{ 
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Update Profile";
+}
+<div id="mainDiv">
+    <div class="col-md-3">
+        <img id="image1" src="~/Content/images/@Model.pic" /><br><br>
+        <label style="padding-left:40px;">@Model.fName</label>
+        <label>@Model.lName</label>
+    </div>
+    <table class="info_table">
+        <tr>
+            <td>Your First Name : </td>
+            <td><input  id="tab_fname" type="text" placeholder="@Model.fName"/> </td>
+        </tr>
+        <tr>
+            <td>Your Last Name :</td>
+            <td ><input id="tab_lname" type="text" placeholder="@Model.lName" /></td>
+        </tr>
+        <tr>
+            <td>Your Email : </td>
+            <td ><label  id="tab_email">@Model.email</label></td>
+        </tr>
+        <tr>
+            <td>Your Phone No :</td>
+            <td ><input id="tab_phone" type="text" placeholder="@Model.phone" /></td>
+        </tr>
+        <tr>
+            <td>Your Password:</td>
+            <td  >
+                <input id="tab_pass" type="password" placeholder="@Model.password" />
+            </td>
+        </tr>
+        <tr>
+            <td>Your Address:</td>
+            <td>
+                <input id="tab_address" type="text" placeholder="@Model.address" />
+            </td>
+        </tr>
+        <tr>
+            <td>Your Country:</td>
+            <td>
+                <input id="tab_country" type="text" placeholder="@Model.country" />
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit"  id="btn" class="action-button shadow animate green" value="Update your Profile" onclick="func()" />
+</div>
+<script>
+    function func()
+    {
+        alert("buttom");
+        @*@ViewBag.fname=document.getElementById("tab_fname").val();
+        @ViewBag.lname=documentgetElementById("tab_lname").val();
+        @ViewBag.email=documentgetElementById("tab_email").val();
+        @ViewBag.phone=documentgetElementById("tab_phone").val();
+        @ViewBag.pass=documentgetElementById("tab_pass").val();
+        @ViewBag.address=documentgetElementById("tab_address").val();
+        @ViewBag.country=documentgetElementById("tab_country").val();*@
+        //alert("b2");
+        window.location.href="/Home/UpdateMe"
+    }
+    @*$(document).ready(function () {
+        $("#btn").click(function () {
+            alert("buttom");
+
+            var fname=document.getElementById("tab_fname").val();
+            var lname=documentgetElementById("tab_lname").val();
+            var email=documentgetElementById("tab_email").val();
+            var phone=documentgetElementById("tab_phone").val();
+            var pass=documentgetElementById("tab_pass").val();
+            var address=documentgetElementById("tab_address").val();
+            var country=documentgetElementById("tab_country").val();
+
+            
+
+        });
+    });*@
+</script>

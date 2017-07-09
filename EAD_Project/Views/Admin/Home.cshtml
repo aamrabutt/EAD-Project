@@ -1,0 +1,213 @@
+﻿@model EAD_Project.Models.Admin_Model
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "DashBoard";
+}
+<link href="~/Content/AdminCSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/AdminCSS/datepicker3.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/styles.css" rel="stylesheet">
+
+<script src="~/Scripts/lumino.glyphs.js"></script>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
+            <li class="active">Icons</li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-blue panel-widget ">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            @if (Model.noOfOrders.ToString() != null)
+                            {
+                                <p>@Model.noOfOrders</p>
+                            }
+                            else
+                            {
+                                <p>0.00</p>
+                            }
+                        </div>
+                        <div class="text-muted">New Orders</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-orange panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            @if (Model.Comments.ToString() != null)
+                            {
+                                <p>@Model.Comments</p>
+                            }
+                            else
+                            {
+                                <p>0</p>
+                            }
+                        </div>
+                        <div class="text-muted">Comments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-teal panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            @if (Model.newUsers.ToString() != null)
+                            {
+                                <p>@Model.newUsers</p>
+                            }
+                            else
+                            {
+                                <p>0</p>
+                            }
+                        </div>
+                        <div class="text-muted">New Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-3">
+            <div class="panel panel-red panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">
+                            @if (Model.Views.ToString() != null)
+                            {
+                                <p>@Model.Views</p>
+                            }
+                            else
+                            {
+                                <p>0</p>
+                            }
+                        </div>
+                        <div class="text-muted">Page Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Site Traffic Overview</div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>New Orders</h4>
+                    @{
+                        float per = Convert.ToSingle(Model.noOfOrders);
+                        float total = Convert.ToSingle(Model.totalOrders);
+                        float percent = ((per / total) * 100);
+                        String prcent1 = percent + "%";
+                        <div class="easypiechart" id="easypiechart-blue" data-percent=@percent>
+                            <span class="percent">@prcent1</span>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>Comments</h4>
+                    @{
+                        float a = Convert.ToSingle(Model.Comments);
+                        float b = Convert.ToSingle(Model.totalcomments);
+                        float res = (a / b) * 100;
+                        string per1 = res + "%";
+                        <div class="easypiechart" id="easypiechart-orange" data-percent=@res>
+                            <span class="percent">@per1</span>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>New Users</h4>
+                    @{
+                        a = Convert.ToSingle(Model.newUsers);
+                        b = Convert.ToSingle(Model.totalUsers);
+                        res = (a / b) * 100;
+                        per1 = res + "%";
+                        <div class="easypiechart" id="easypiechart-teal" data-percent="@res">
+                            <span class="percent">@per1</span>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body easypiechart-panel">
+                    <h4>Visitors</h4>
+                    @{
+                        a = Convert.ToSingle(Model.Views);
+                        b = Convert.ToSingle(Model.totalViews);
+                        res = (a / b) * 100;
+                        per1 = res + "%";
+                        <div class="easypiechart" id="easypiechart-red" data-percent=@res>
+                            <span class="percent">@per1</span>
+                        </div>
+                    }
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+</div>	<!--/.main-->
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/chart-data.js"></script>
+<script src="~/Scripts/easypiechart.js"></script>
+<script src="~/Scripts/easypiechart-data.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>

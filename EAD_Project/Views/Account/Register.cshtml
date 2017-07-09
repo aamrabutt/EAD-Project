@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.title = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Register Page</li>
+        </ol>
+    </div>
+</div>
+<div class="register">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">
+            Register Now to get More offers.
+        </p>
+        <div class="login-form-grids">
+            <h5 class="animated wow slideInUp" data-wow-delay=".5s">profile information</h5>
+            <form class="animated wow slideInUp" data-wow-delay=".5s" action="@Url.Action("RegisterMe","Account")" method="post">
+                <input type="text" placeholder="First Name..." name="txt_firstName" required id="txt_firstName"/>
+                <input type="text" placeholder="Last Name..." name="txt_lastName" required id="txt_lastName"/>
+                <input type="text" placeholder="phone No..." name="txt_phone" required id="txt_phone"/><br />
+                Gender : <input type="radio" name="gender"  id="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"  id="gender"style="margin-left:68px;"> Female<br><br>
+                <textarea rows="4" cols="50" placeholder="Address..." name="txt_address" id="txt_address" required></textarea>
+                <input type="text" placeholder="Country..." name="txt_country" id="txt_country" required /><br />
+                <div class="register-check-box animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="check">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Remember me</label>
+                    </div>
+                </div>
+                <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
+                <div class="animated wow slideInUp" data-wow-delay=".5s">
+                    <input type="email" placeholder="Email Address" name="txt_email" id="txt_email" required/>
+                    <input type="password" placeholder="Password" name="txt_pass" id="txt_pass" required/>
+                    <input type="password" placeholder="Password Confirmation" id="txt_conpass" name="txt_conpass"  required/>
+                    <div class="register-check-box">
+                        <div class="check">
+                            <label class="checkbox"><input type="checkbox" id="checkbox" name="checkbox" required checked><i> </i>I accept the terms and conditions</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Register" id="register">
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#register").click(function () {
+            var p1 = document.getElementById("txt_pass").value;
+            var p2 = document.getElementById("txt_conpass").value;
+            if (p1 != p2 || document.getElementById("checkbox").checked) {
+                alert("Not match");
+            }
+            
+        });
+    });
+
+</script>
