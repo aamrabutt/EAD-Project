@@ -110,14 +110,14 @@ namespace EAD_Project.Controllers
         {
             return View();
         }
-        public void ContactMe()
+        public ActionResult ContactMe()
         {
             string name = Request["txt_name"];
             string senderEmail = Request["txt_email"];
             string sub = Request["txt_sub"];
             string msg = Request["txt_msg"];
             sendemail(senderEmail, name, sub, msg);
-            //return View();
+            return View("Index");
         }
         public ActionResult CheckOut()
         {
