@@ -14,19 +14,23 @@ namespace BAL
         {
             ItemDAO.AddToCart(id, prodId,price);
         }
-        public static List<ItemDTO> getCart(int id)
+        public static List<CartModel> getCart(int id)
         {
-            List<ItemDTO> it = new List<ItemDTO>();
-            List<int> prodId=ItemDAO.getCart(id);
+            List<CartModel> it = new List<CartModel>();
+            List<Entities.Cart> prodId=ItemDAO.getCart(id);
             foreach(var i in prodId)
             {
-                it.Add(ItemDAO.getItemById(i));
+                it.Add(new CartModel(ItemDAO.getItemById(i.productID), i.CartID));
             }
             return it;
         }
         public static int getBill(int id)
         {
             return DAL.ItemDAO.getBill(id);
+        }
+        public static int deleteFromCart(int id)
+        {
+            return DAL.ItemDAO.deleteCartById(id);
         }
     }
 }

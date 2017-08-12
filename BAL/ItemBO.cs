@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DAL;
+using Entities;
 using System.Collections.Generic;
 
 namespace BAL
@@ -20,6 +21,7 @@ namespace BAL
             list.Add(new ItemDTO(5, "lamp 2", "WALL LAMP", "A casual lamp.", "This is explained description", "9.jpg", "5.jpg", "4.jpg", 200, 150, 4, 3));
             list.Add(new ItemDTO(6, "necklace", "PEARL AND STONE ANCKLET", "A gorgeous ancklet.", "This is explained description", "10.jpg", "5.jpg", "4.jpg", 300, 280, 4, 4));
             list.Add(new ItemDTO(7, "bangles", "STONES BANGLES", "Stone bangles.", "This is explained description", "11.jpg", "5.jpg", "4.jpg", 200, 150, 4, 3));
+            //list = ItemDAO.getAllItems();
             return list;
             //return DAL.ItemDAO.getAllItems();
         }

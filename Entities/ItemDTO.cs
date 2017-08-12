@@ -14,6 +14,7 @@
         public int rating { get; set; }
         public string picture3 { get; set; }
         public string explainedDescription { get; set; }
+        public string type { get; set; }
 
         public ItemDTO() { }
         public ItemDTO(int i, string k, string n, string d, string ex, string pic1, string pic2, string pic3, int pold, int pnew, int qua, int ra)

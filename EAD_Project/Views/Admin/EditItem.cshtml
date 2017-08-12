@@ -1,0 +1,26 @@
+﻿@model Entities.ItemDTO
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Edit Item";
+}
+<link href="~/Content/AdminCSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/AdminCSS/datepicker3.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/styles.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/bootstrap-table.css" rel="stylesheet">
+<form action="@Url.Action("EditItem","Admin")" method="post" enctype="multipart/form-data">
+    <br /><br /><br />
+    <h3 style="margin-left:400px;">Add Item</h3>
+    <img src="~/Content/images/@Model.picture1" width="200px" height="200px" style="margin-right:200px;float:right">
+    <input type="file" style="float:right; margin-right:0px;margin-top:300px;" name="file" id="file" />
+    <input style="margin-left:400px;" type="text" placeholder="Name" name="Name" required  value=@Model.Name/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Description" name="Des" required value=@Model.description/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Detailed description" name="Detail" required value=@Model.explainedDescription/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Price Old" name="pold" required value=@Model.priceOld/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Price New" name="pnew" required value=@Model.priceNew/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Quantity" name="quan" required value=@Model.quantity/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Rating" name="rat" required value=@Model.rating/><br /><br />
+    <input type="hidden" value="@Model.Id" name="Id"/>
+    <br /><br />
+    <input style="margin-left:500px;" type="submit" value="Edit item" />
+</form>

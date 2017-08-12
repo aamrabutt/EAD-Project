@@ -14,7 +14,7 @@ namespace DAL
                 con.Open();
                 return con;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

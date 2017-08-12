@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">
-                            @if (Model.noOfOrders.ToString() != null)
+                            @if (Model != null)
                             {
                                 <p>@Model.noOfOrders</p>
                             }
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">
-                            @if (Model.Comments.ToString() != null)
+                            @if (Model != null)
                             {
                                 <p>@Model.Comments</p>
                             }
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">
-                            @if (Model.newUsers.ToString() != null)
+                            @if (Model!= null)
                             {
                                 <p>@Model.newUsers</p>
                             }
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
                         <div class="large">
-                            @if (Model.Views.ToString() != null)
+                            @if (Model != null)
                             {
                                 <p>@Model.Views</p>
                             }
@@ -134,7 +134,7 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>New Orders</h4>
-                    @{
+                    @if(Model!=null){
                         float per = Convert.ToSingle(Model.noOfOrders);
                         float total = Convert.ToSingle(Model.totalOrders);
                         float percent = ((per / total) * 100);
@@ -151,7 +151,7 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>Comments</h4>
-                    @{
+                    @if(Model!=null){
                         float a = Convert.ToSingle(Model.Comments);
                         float b = Convert.ToSingle(Model.totalcomments);
                         float res = (a / b) * 100;
@@ -169,11 +169,11 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>New Users</h4>
-                    @{
-                        a = Convert.ToSingle(Model.newUsers);
-                        b = Convert.ToSingle(Model.totalUsers);
-                        res = (a / b) * 100;
-                        per1 = res + "%";
+                    @if(Model!=null){
+                        float a = Convert.ToSingle(Model.newUsers);
+                        float b = Convert.ToSingle(Model.totalUsers);
+                        float res = (a / b) * 100;
+                        string per1 = res + "%";
                         <div class="easypiechart" id="easypiechart-teal" data-percent="@res">
                             <span class="percent">@per1</span>
                         </div>
@@ -186,11 +186,12 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>Visitors</h4>
-                    @{
-                        a = Convert.ToSingle(Model.Views);
-                        b = Convert.ToSingle(Model.totalViews);
-                        res = (a / b) * 100;
-                        per1 = res + "%";
+                    @if (Model != null)
+                    {
+                        float a = Convert.ToSingle(Model.Views);
+                        float b = Convert.ToSingle(Model.totalViews);
+                        float res = (a / b) * 100;
+                        string per1 = res + "%";
                         <div class="easypiechart" id="easypiechart-red" data-percent=@res>
                             <span class="percent">@per1</span>
                         </div>

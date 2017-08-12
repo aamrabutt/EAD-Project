@@ -26,7 +26,7 @@ namespace DAL
             try
             {
                 SqlConnection c = DBConnection.getConnection();
-                SqlCommand com = new SqlCommand(query, c);
+                 SqlCommand com = new SqlCommand(query, c);
                 
                 int res= com.ExecuteNonQuery();
                 c.Close();

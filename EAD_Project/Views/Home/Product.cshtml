@@ -8,7 +8,7 @@
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href=@Url.Action("Index","Home")><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Product </li>
+            <li class="active">Products </li>
         </ol>
     </div>
 </div>
@@ -33,7 +33,7 @@ else
             <h4><a href="../Home/Single/@item.Id">@item.Name</a></h4>
             <p>@item.description</p>
             <div class="new-collections-grid1-left simpleCart_shelfItem">
-                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="#">add to cart </a></p>
+                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="@Url.Action("Bill", "Home", new { data = item.Id })">Add to cart </a></p>
             </div>
         </div>
         count++;
@@ -48,7 +48,7 @@ else
             <h4><a href="../Home/Single/@item.Id">@item.Name</a></h4>
             <p>@item.description</p>
             <div class="new-collections-grid1-left simpleCart_shelfItem">
-                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="#">add to cart </a></p>
+                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="@Url.Action("Bill", "Home", new { data = item.Id })">Add to cart </a></p>
             </div>
         </div>
         count++;
@@ -60,7 +60,7 @@ else
             <h4><a href="../Home/Single/@item.Id">@item.Name</a></h4>
             <p>@item.description</p>
             <div class="new-collections-grid1-left simpleCart_shelfItem">
-                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="#">add to cart </a></p>
+                <p><i>$@item.priceOld</i> <span class="item_price">$@item.priceNew</span><a class="item_add" href="@Url.Action("Bill", "Home", new { data = item.Id })">Add to cart </a></p>
             </div>
             @*<div class="new-collections-grid1-left simpleCart_shelfItem">
                 <a class="item_add" href="#">add to cart </a>

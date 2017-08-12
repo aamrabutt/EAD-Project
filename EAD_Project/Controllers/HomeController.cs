@@ -13,6 +13,31 @@ namespace EAD_Project.Controllers
 {
     public class HomeController : Controller
     {
+        //public void get()
+        //{
+        //    var ShopifyEntities  b= new ShopifyEntities();
+        //    UserDTO u = new UserDTO();
+            
+        //}
+        [HttpPost]
+        public JsonResult func1(List<String> val)
+        {
+            int id = Convert.ToInt32(val[1]);
+            object data = null;
+            data = new
+            {
+                valid = 0
+            };
+
+            JsonResult jsonResult = new JsonResult()
+            {
+                Data = data,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+
+            return jsonResult;
+
+        }
         public ActionResult Bill(int data)
         {
             if(Session["User_Id"]==null)
@@ -23,26 +48,17 @@ namespace EAD_Project.Controllers
             {
                 BAL.Cart.AddToCart(Convert.ToInt32(Session["User_Id"].ToString()), data, IndexModel.get(data, IndexModel.getAllData()).priceNew);
             }
-            //int bill = BAL.Cart.getBill(Convert.ToInt32(Session["User_Id"].ToString()));
-            ////if (ViewBag.bill != null)
-            ////{
-            //     bill = Convert.ToInt32(ViewBag.bill.ToString());
-            //    ViewBag.bill = bill + IndexModel.get(data, IndexModel.getAllData()).priceNew;
-            ////}
-            ////else
-            //    ViewBag.bill = IndexModel.get(data,IndexModel.getAllData()).priceNew;
-            //bill = Convert.ToInt32(ViewBag.bill.ToString());
             return RedirectToAction("IndexM","Home");
-            //return View("IndexM");
         }
         public ActionResult Product(string data)
         {
             string[] tokens = data.Split('_');
-            /*List<ItemDTO> b=*/
             return View(ProductBO.getProduct(tokens[0], tokens[1]));
         }
         public ActionResult IndexM()
         {
+
+            //IndexModel.getAllData1();
             IndexModel i = new IndexModel();
             i.myList = BAL.ItemBO.getAll();
             return View(i);
@@ -61,7 +77,6 @@ namespace EAD_Project.Controllers
         {
             if (Session["User_Id"] != null)
             {
-                //user.pic;
                 UserDTO user = new UserDTO();
                 user.fName = tab_fname;
                 user.lName = tab_lname;
@@ -96,14 +111,10 @@ namespace EAD_Project.Controllers
         }
         public ActionResult Single(int id)
         {
-            //Session["User_Id"] = "abc";
-            //IndexModel i=new IndexModel(IndexModel.getAllData());
             if (Session["User_Id"] == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-
-            //return View(IndexModel.get(i,IndexModel.get()));
             return View(IndexModel.get(id, IndexModel.getAllData()));
         }
         public ActionResult Contact()
@@ -119,14 +130,17 @@ namespace EAD_Project.Controllers
             sendemail(senderEmail, name, sub, msg);
             return View("Index");
         }
+        public ActionResult DeleteFromCart(int data)
+        {
+            BAL.Cart.deleteFromCart(data);
+            return RedirectToAction("CheckOut", "Home");
+        }
         public ActionResult CheckOut()
         {
             if (Session["User_Id"] != null)
             {
-                List<ItemDTO> model = new List<ItemDTO>();
+                List<CartModel> model = new List<CartModel>();
                 model = BAL.Cart.getCart(Convert.ToInt32(Session["User_Id"].ToString()));
-                //model.Add(new ItemModel(1, "shoes", "Black Shoes", "", "", "1.jpg", "", "", 250, 120, 3, 4));
-                //model.Add(new ItemModel(2, "Table", "Center Table", "", "", "4.jpg", "", "", 200, 100, 2, 4));
                 return View(model);
             }
             else

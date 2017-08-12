@@ -1,4 +1,4 @@
-﻿@model List<Entities.ItemDTO>
+﻿@model List<Entities.CartModel>
 @{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "CheckOut";
@@ -42,37 +42,38 @@
 
                     <tr class="rem1">
                         <td class="invert">@count</td>
-                        <td class="invert-image"><a href="#"><img src="~/Content/images/@item.picture1" alt="" class="img-responsive" /></a></td>
+                        <td class="invert-image"><a href="#"><img src="~/Content/images/@item.item.picture1" alt="" class="img-responsive" /></a></td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
                                     <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>@item.quantity</span></div>
+                                    <div class="entry value"><span>@item.item.quantity</span></div>
                                     <div class="entry value-plus active">&nbsp;</div>
                                 </div>
                             </div>
                         </td>
-                        <td class="invert">@item.Name</td>
+                        <td class="invert">@item.item.Name</td>
                         <td class="invert">$5.00</td>
-                        <td class="invert">$@item.priceNew</td>
+                        <td class="invert">$@item.item.priceNew</td>
                         <td class="invert">
-                            <div class="rem">
-                                <div class="close1"> </div>
-                            </div>
-                            <script>
+                            @*<div class="rem">*@
+                                @*<div class="close1">*@ <a href="@Url.Action("DeleteFromCart","Home",new {data=item.id })">Remove</a>@*</div>*@
+    @*</div>*@
+    @*<script>
 
-                                $(document).ready(function (c) {
-                                    $('.close1').on('click', function (c) {
-                                        $('.rem1').fadeOut('slow', function (c) {
-                                            $('.rem1').remove();
-                                        });
-                                    });
-                                });
-                            </script>
+        $(document).ready(function (c) {
+            $('.close1').on('click', function (c) {
+                $('.rem1').fadeOut('slow', function (c) {
+                    $('.rem1').remove();
+
+                });
+            });
+        });
+    </script>*@
                         </td>
                     </tr>
                         count = count + 1;
-                        totalCharge = totalCharge + item.priceNew;
+                        totalCharge = totalCharge + item.item.priceNew;
                 }
             </table>
 
@@ -83,7 +84,7 @@
                 <ul>
                     @foreach (var it in Model)
                     {
-                        <li>@it.Name <i>-</i> <span>$@it.priceNew</span></li>
+                        <li>@it.item.Name <i>-</i> <span>$@it.item.priceNew</span></li>
                     }
                     @{
                         int totalTax = 5* Model.Count;

@@ -1,0 +1,36 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Add Item";
+}
+<link href="~/Content/AdminCSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/AdminCSS/datepicker3.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/styles.css" rel="stylesheet">
+<link href="~/Content/AdminCSS/bootstrap-table.css" rel="stylesheet">
+<form action="@Url.Action("AddItemInDB","Admin")" method="post" enctype = "multipart/form-data">
+    <br /><br /><br />
+    <h3 style="margin-left:400px;">Add Item</h3>
+    <img src="~/Content/images/14.jpg" width="200px" height="200px" style="margin-right:200px;float:right">
+    <input type="file" style="float:right; margin-right:0px;margin-top:300px;" name="file" id="file"/>
+    <input style="margin-left:400px;" type="text" placeholder="Name" name="Name" required/><br /><br />
+   <input style="margin-left:400px;" type="text" placeholder="Description" name="Des" required/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Detailed description" name="Detail" required /><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Price Old" name="pold" required/><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Price New" name="pnew" required /><br /><br />
+    <input style="margin-left:400px;" type="text" placeholder="Quantity" name="quan" required /><br /><br />
+    <input style="margin-left:400px;" type="text"placeholder="Rating" name="rat" required/><br /><br />
+    <select style="margin-left:400px;" name="type">
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+    </select>
+
+    <br /><br />
+    <select style="margin-left:400px;" name="type1">
+        <option value="Cloth">Cloth</option>
+        <option value="Shoes">Shoes</option>
+        <option value="Wallet">Wallet</option>
+        <option value="Watches">Watches</option>
+    </select>
+    <br /><br /><br />
+    <input style="margin-left:500px;" type="submit" value="Add item" />
+</form>

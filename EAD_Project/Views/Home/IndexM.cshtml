@@ -139,7 +139,7 @@
                     <h4><a href="../Home/Single/@Model.get("Blue Shirt").Id">@Model.get("Blue Shirt").Name</a></h4>
                     <p>@Model.get("Blue Shirt").description</p>
                     <div class="new-collections-grid1-left simpleCart_shelfItem">
-                        <p><i>$@Model.get("Blue Shirt").priceOld</i> <span class="item_price">$@Model.get("Blue Shirt").priceNew</span><a class="item_add" href="@Url.Action("Bill", "Home", new { data = Model.get("Blue Shirt").Id })">add to cart </a></p>
+                        <p><i>$@Model.get("Blue Shirt").priceOld</i> <span class="item_price">$@Model.get("Blue Shirt").priceNew</span><a class="item_add" href="@Url.Action("Bill", "Home", new { data = Model.get("Blue Shirt").Id })" @*onclick="func(@Model.get("Blue Shirt").Id)"*@>add to cart </a></p>
                     </div>
                 </div>
                 <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
@@ -419,3 +419,39 @@
     </div>
 </div>
 <!-- //collections-bottom -->
+@*<script>
+    var id1;
+    function func(id)
+    {
+        id1 = id;
+        alert(id);
+        if(@Session["User_Id"]!=null)
+        {
+            @*var userId=@Session["UserId"].ToString();
+
+            $.ajax({
+                url: "http://localhost:55210//Home/func1",
+                type: "Post",
+                data: JSON.stringify([id1,userId]),
+                contentType: 'application/json; charset=utf-8',
+                success: function (resp)
+                {
+                    alert("Yeah");
+                    //if (resp.Data.valid == 0) {
+                    //    alert("yeah");
+                    //    //window.location.href = "../Person/Success";
+                    //}
+                },
+                failure: function () { alert("failure"); },
+                error: function (xhr) {
+                    alert('Request Status: ' + xhr.status + ' Status Text: ' + xhr.statusText + ' ' + xhr.responseText);
+                }
+            });
+        }
+        else
+        {
+            window.location.href="/Account/Login";
+        }
+
+    }
+</script>*@
